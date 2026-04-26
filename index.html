@@ -24,6 +24,48 @@
       color: var(--text);
       line-height: 1.7;
     }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+    }
+    .brand {
+      color: var(--text);
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      background: #eff6ff;
+    }
     header {
       background: linear-gradient(135deg, #eff6ff, #ffffff);
       border-bottom: 1px solid var(--line);
@@ -89,9 +131,29 @@
       padding: 2px 6px;
       border-radius: 6px;
     }
+    @media (max-width: 640px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="主導覽列">
+    <div class="nav-inner">
+      <a class="brand" href="/">吳偉帆</a>
+      <div class="nav-links">
+        <a class="active" href="/">首頁</a>
+        <a href="/training-plan.html">飲食與訓練計畫</a>
+        <a href="/lovable/index.html">Lovable 子頁面</a>
+      </div>
+    </div>
+  </nav>
+
   <header>
     <div class="container">
       <h1>吳偉帆</h1>
@@ -110,6 +172,12 @@
             <li>版面與顏色由同一份檔案中的 <code>&lt;style&gt;</code> 控制</li>
             <li>適合作為 GitHub Pages 的穩定入口頁</li>
           </ul>
+        </article>
+
+        <article class="card">
+          <h2>飲食與訓練計畫</h2>
+          <p>這是一份用於減脂、力量與爆發力訓練的單頁子頁面，包含營養目標、外食策略、划船機調整與週課表。</p>
+          <a class="button" href="/training-plan.html">打開計畫子頁面</a>
         </article>
 
         <article class="card">
