@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日登記與反思 | 飲食與訓練計畫</title>
+  <meta name="description" content="飲食與訓練計畫的每日登記與反思頁面。資料預設只存在本機瀏覽器，不公開上傳。">
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --accent: #2563eb;
+      --accent-2: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --accent-soft-2: #dbeafe;
+      --good: #0f766e;
+      --warn: #b45309;
+      --danger: #b91c1c;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans TC", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+    }
+    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
+    header.hero {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #eff6ff, #ffffff 62%, #f8fafc);
+      padding: 52px 20px 38px;
+    }
+    .container { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    h1 { margin: 0 0 14px; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.15; letter-spacing: -0.04em; }
+    h2 { margin: 0 0 16px; font-size: clamp(1.35rem, 2vw, 1.8rem); }
+    h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); max-width: 760px; margin: 0; font-size: 1.05rem; }
+    main { padding: 34px 0 64px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+    .callout.good { border-color: var(--good); background: #ecfdf5; }
+    .callout.warn { border-color: var(--warn); background: #fffbeb; }
+    .callout.danger { border-color: var(--danger); background: #fef2f2; }
+    label { display: block; font-weight: 800; margin: 14px 0 6px; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      font: inherit;
+      background: #ffffff;
+      color: var(--text);
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .row-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    button, .button-link {
+      border: 0;
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 800;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-block;
+    }
+    button.secondary, .button-link.secondary { background: #e5e7eb; color: var(--text); }
+    button.warn { background: var(--warn); }
+    button.danger { background: var(--danger); }
+    .small { color: var(--muted); font-size: 0.92rem; }
+    .hidden { display: none !important; }
+    .year-block {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 18px;
+    }
+    .entry {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fbfdff;
+      margin-top: 12px;
+    }
+    .entry h3 { margin-top: 0; }
+    .entry pre {
+      white-space: pre-wrap;
+      background: #f3f4f6;
+      border-radius: 12px;
+      padding: 12px;
+      overflow-wrap: anywhere;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .tag {
+      background: #eef2ff;
+      color: var(--accent-2);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+    code { background: #eef2ff; padding: 2px 6px; border-radius: 6px; }
+    @media (max-width: 860px) { .grid, .row, .row-3 { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .nav-inner { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; } .card { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="主導覽列">
+    <div class="nav-inner">
+      <a class="brand" href="/">吳偉帆</a>
+      <div class="nav-links">
+        <a href="/">首頁</a>
+        <a href="/training-plan-v2.html">飲食與訓練計畫</a>
+        <a class="active" href="/training-plan/daily-log.html">每日登記</a>
+        <a href="/lovable/index.html">Lovable 子頁面</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>每日登記與反思</h1>
+      <p class="lead">這是飲食與訓練計畫的第二層工具頁。資料預設只存放在目前這台裝置的瀏覽器 localStorage，不會被提交到公開 GitHub repo。你可以用它快速登記，並一鍵產生要貼給 ChatGPT 的日誌格式。</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="card" id="privacy-note">
+        <h2>安全與限制</h2>
+        <div class="callout danger">
+          <strong>重要：</strong>這是 GitHub Pages 靜態網站，不能提供真正的伺服器登入、真正的 Gmail 驗證碼寄送，也不能真正保護公開檔案。真正的帳號登入、密碼雜湊、Gmail OTP、資料庫加密，需要 Firebase、Supabase、Cloudflare Workers、Netlify Identity 或自己的後端。
+        </div>
+        <p>本頁採用較安全的折衷方案：不要把每日紀錄寫進 repo；紀錄只存在你的瀏覽器本機。下方「本機密碼鎖」只防止同一台裝置被隨手打開，不等於正式資安登入。</p>
+      </section>
+
+      <section class="grid">
+        <div>
+          <section class="card" id="local-lock">
+            <h2>本機密碼鎖</h2>
+            <p class="small">第一次使用時輸入帳號名稱與本機密碼，之後用同一組解鎖。密碼雜湊只存在你的瀏覽器。</p>
+            <label for="account">帳號名稱 / Gmail</label>
+            <input id="account" type="email" placeholder="example@gmail.com">
+            <label for="passcode">本機密碼</label>
+            <input id="passcode" type="password" placeholder="只存在本機，不會上傳">
+            <div class="buttons">
+              <button id="unlockBtn">解鎖 / 建立本機鎖</button>
+              <button class="secondary" id="lockBtn">鎖定</button>
+              <button class="danger" id="resetLockBtn">重設本機鎖</button>
+            </div>
+            <p class="small" id="lockStatus">狀態：尚未解鎖。</p>
+          </section>
+
+          <section class="card hidden" id="entryFormCard">
+            <h2>新增 / 更新每日紀錄</h2>
+            <div class="row">
+              <div>
+                <label for="date">日期</label>
+                <input id="date" type="date">
+              </div>
+              <div>
+                <label for="weight">體重 BW</label>
+                <input id="weight" placeholder="例如 81.9">
+              </div>
+            </div>
+            <label for="food">飲食 F</label>
+            <textarea id="food" placeholder="例如：和風豆皮涼麵；滷味=大豆乾、小豆乾x2、冬粉、白蘿蔔、高麗菜、蛋"></textarea>
+            <label for="training">重訓 T</label>
+            <textarea id="training" placeholder="例如：45度站立腿推 5x10 @50–60%，快推慢收"></textarea>
+            <div class="row-3">
+              <div>
+                <label for="rowTime">划船時間</label>
+                <input id="rowTime" placeholder="15:00">
+              </div>
+              <div>
+                <label for="rowDistance">距離</label>
+                <input id="rowDistance" placeholder="2.68km">
+              </div>
+              <div>
+                <label for="rowPace">500m配速</label>
+                <input id="rowPace" placeholder="2:46">
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="rowSpm">平均 spm</label>
+                <input id="rowSpm" placeholder="26">
+              </div>
+              <div>
+                <label for="rowMode">划船模式</label>
+                <input id="rowMode" placeholder="6-12 + (5-10-5-11)x3 + 5-10">
+              </div>
+            </div>
+            <div class="row-3">
+              <div>
+                <label for="sleep">睡眠 S</label>
+                <input id="sleep" placeholder="例如 6.5h / 普通">
+              </div>
+              <div>
+                <label for="energy">精神 E</label>
+                <input id="energy" placeholder="1–10">
+              </div>
+              <div>
+                <label for="hunger">飢餓 H</label>
+                <input id="hunger" placeholder="1–10">
+              </div>
+            </div>
+            <label for="notes">備註 / 問題 Q</label>
+            <textarea id="notes" placeholder="例如：腿推速度後面下降；晚餐蛋白可能不足"></textarea>
+            <label for="gmailCode">Gmail 驗證碼查重欄（本機）</label>
+            <input id="gmailCode" placeholder="若你手動收到驗證碼，可輸入；本頁只做本機重複檢查">
+            <p class="small" id="codeStatus">此功能不會寄信，只檢查本機紀錄中是否用過同一組碼。</p>
+            <div class="buttons">
+              <button id="saveBtn">儲存到本機</button>
+              <button class="secondary" id="fillTodayBtn">填入 2026/04/27 範例</button>
+              <button class="secondary" id="clearFormBtn">清空表單</button>
+            </div>
+          </section>
+        </div>
+
+        <div>
+          <section class="card hidden" id="reportCard">
+            <h2>快速回報給 ChatGPT</h2>
+            <p class="small">儲存紀錄後，這裡會產生簡短格式。複製貼給 ChatGPT，我就能做今日反思。</p>
+            <textarea id="chatReport" readonly></textarea>
+            <div class="buttons">
+              <button id="copyReportBtn">複製回報文字</button>
+              <button class="secondary" id="exportBtn">匯出 JSON</button>
+              <button class="secondary" id="importBtn">匯入 JSON</button>
+              <input id="importFile" type="file" accept="application/json" class="hidden">
+            </div>
+          </section>
+
+          <section class="card hidden" id="entriesCard">
+            <h2>年份與日期紀錄</h2>
+            <p class="small">紀錄會依年份分組，日期由新到舊排序。</p>
+            <div id="entries"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 吳偉帆. Local-only daily log page for training reflection.
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'trainingDailyLogs.v1';
+    const LOCK_KEY = 'trainingDailyLogs.lock.v1';
+    let unlocked = false;
+
+    const $ = (id) => document.getElementById(id);
+
+    function todayISO() {
+      const d = new Date();
+      const z = (n) => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}`;
+    }
+
+    async function sha256(text) {
+      const data = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function getLogs() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+      catch { return {}; }
+    }
+
+    function setLogs(logs) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(logs, null, 2));
+    }
+
+    function setUnlockedUI(state) {
+      unlocked = state;
+      $('entryFormCard').classList.toggle('hidden', !state);
+      $('reportCard').classList.toggle('hidden', !state);
+      $('entriesCard').classList.toggle('hidden', !state);
+      $('lockStatus').textContent = state ? '狀態：已解鎖。資料只存在本機瀏覽器。' : '狀態：尚未解鎖。';
+      if (state) renderEntries();
+    }
+
+    async function unlock() {
+      const account = $('account').value.trim().toLowerCase();
+      const pass = $('passcode').value;
+      if (!account || !pass) {
+        alert('請輸入帳號名稱與本機密碼。');
+        return;
+      }
+      const stored = JSON.parse(localStorage.getItem(LOCK_KEY) || 'null');
+      const digest = await sha256(`${account}:${pass}`);
+      if (!stored) {
+        localStorage.setItem(LOCK_KEY, JSON.stringify({ account, digest }));
+        setUnlockedUI(true);
+        return;
+      }
+      if (stored.account === account && stored.digest === digest) {
+        setUnlockedUI(true);
+      } else {
+        alert('帳號或本機密碼不一致。');
+      }
+    }
+
+    function lock() { setUnlockedUI(false); }
+
+    function resetLock() {
+      if (!confirm('確定要重設本機鎖？紀錄不會被刪除，但任何人可重新建立本機鎖。')) return;
+      localStorage.removeItem(LOCK_KEY);
+      setUnlockedUI(false);
+      alert('已重設本機鎖。');
+    }
+
+    function readForm() {
+      const date = $('date').value || todayISO();
+      return {
+        date,
+        weight: $('weight').value.trim(),
+        food: $('food').value.trim(),
+        training: $('training').value.trim(),
+        rowTime: $('rowTime').value.trim(),
+        rowDistance: $('rowDistance').value.trim(),
+        rowPace: $('rowPace').value.trim(),
+        rowSpm: $('rowSpm').value.trim(),
+        rowMode: $('rowMode').value.trim(),
+        sleep: $('sleep').value.trim(),
+        energy: $('energy').value.trim(),
+        hunger: $('hunger').value.trim(),
+        notes: $('notes').value.trim(),
+        gmailCode: $('gmailCode').value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+    }
+
+    function writeForm(entry) {
+      $('date').value = entry.date || todayISO();
+      $('weight').value = entry.weight || '';
+      $('food').value = entry.food || '';
+      $('training').value = entry.training || '';
+      $('rowTime').value = entry.rowTime || '';
+      $('rowDistance').value = entry.rowDistance || '';
+      $('rowPace').value = entry.rowPace || '';
+      $('rowSpm').value = entry.rowSpm || '';
+      $('rowMode').value = entry.rowMode || '';
+      $('sleep').value = entry.sleep || '';
+      $('energy').value = entry.energy || '';
+      $('hunger').value = entry.hunger || '';
+      $('notes').value = entry.notes || '';
+      $('gmailCode').value = entry.gmailCode || '';
+      updateCodeStatus();
+    }
+
+    function makeReport(entry) {
+      const compactDate = (entry.date || '').replaceAll('-', '');
+      return `${compactDate}\nBW：${entry.weight}\nF：${entry.food}\nT：${entry.training}\nR：${entry.rowTime}，${entry.rowDistance}，${entry.rowPace}/500m，avg spm ${entry.rowSpm}，模式 ${entry.rowMode}\nS：${entry.sleep}\nE：${entry.energy}\nH：${entry.hunger}\nQ：${entry.notes}`;
+    }
+
+    function saveEntry() {
+      const entry = readForm();
+      const logs = getLogs();
+      const exists = Boolean(logs[entry.date]);
+      if (exists && !confirm(`${entry.date} 已有紀錄，要覆蓋嗎？`)) return;
+      logs[entry.date] = entry;
+      setLogs(logs);
+      $('chatReport').value = makeReport(entry);
+      renderEntries();
+      alert('已儲存到本機瀏覽器。');
+    }
+
+    function clearForm() {
+      writeForm({ date: todayISO() });
+      $('chatReport').value = '';
+    }
+
+    function fillTodayExample() {
+      writeForm({
+        date: '2026-04-27',
+        food: '和風豆皮涼麵；滷味=大豆乾、小豆乾x2、冬粉、白蘿蔔、高麗菜、蛋',
+        training: '45度站立腿推 5x10 @50–60%，快推慢收',
+        rowTime: '15:00',
+        rowDistance: '2.68km',
+        rowPace: '2:46',
+        rowSpm: '26',
+        rowMode: '6-12 + (5-10-5-11)x3 + 5-10',
+        notes: '今日下肢與划船紀錄；之後可評估腿推是否改為較低次數以提升爆發純度。'
+      });
+    }
+
+    function updateCodeStatus() {
+      const code = $('gmailCode').value.trim();
+      if (!code) {
+        $('codeStatus').textContent = '此功能不會寄信，只檢查本機紀錄中是否用過同一組碼。';
+        return;
+      }
+      const logs = getLogs();
+      const matches = Object.values(logs).filter(e => e.gmailCode === code && e.date !== $('date').value);
+      $('codeStatus').textContent = matches.length ? `警告：此驗證碼已在本機紀錄中出現過 ${matches.length} 次。` : '本機紀錄中尚未發現重複驗證碼。';
+    }
+
+    function renderEntries() {
+      const logs = getLogs();
+      const dates = Object.keys(logs).sort().reverse();
+      const root = $('entries');
+      if (!dates.length) {
+        root.innerHTML = '<p class="small">目前尚無紀錄。</p>';
+        return;
+      }
+      const byYear = {};
+      dates.forEach(date => {
+        const year = date.slice(0, 4);
+        if (!byYear[year]) byYear[year] = [];
+        byYear[year].push(logs[date]);
+      });
+      root.innerHTML = Object.keys(byYear).sort().reverse().map(year => `
+        <div class="year-block">
+          <h3>${year}</h3>
+          ${byYear[year].map(entry => `
+            <article class="entry">
+              <h3>${entry.date}</h3>
+              <div class="tag-row">
+                ${entry.weight ? `<span class="tag">BW ${entry.weight}</span>` : ''}
+                ${entry.rowDistance ? `<span class="tag">Row ${entry.rowDistance}</span>` : ''}
+                ${entry.rowSpm ? `<span class="tag">spm ${entry.rowSpm}</span>` : ''}
+                ${entry.energy ? `<span class="tag">E ${entry.energy}</span>` : ''}
+                ${entry.hunger ? `<span class="tag">H ${entry.hunger}</span>` : ''}
+              </div>
+              <pre>${makeReport(entry)}</pre>
+              <div class="buttons">
+                <button class="secondary" onclick="editEntry('${entry.date}')">編輯</button>
+                <button class="secondary" onclick="copyEntry('${entry.date}')">複製</button>
+                <button class="danger" onclick="deleteEntry('${entry.date}')">刪除</button>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    window.editEntry = function(date) {
+      const logs = getLogs();
+      if (!logs[date]) return;
+      writeForm(logs[date]);
+      $('chatReport').value = makeReport(logs[date]);
+      window.scrollTo({ top: $('entryFormCard').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    window.copyEntry = async function(date) {
+      const logs = getLogs();
+      if (!logs[date]) return;
+      await navigator.clipboard.writeText(makeReport(logs[date]));
+      alert('已複製。');
+    }
+
+    window.deleteEntry = function(date) {
+      if (!confirm(`確定刪除 ${date} 的本機紀錄？`)) return;
+      const logs = getLogs();
+      delete logs[date];
+      setLogs(logs);
+      renderEntries();
+    }
+
+    function exportLogs() {
+      const blob = new Blob([JSON.stringify(getLogs(), null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `training-daily-logs-${todayISO()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importLogs(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const incoming = JSON.parse(reader.result);
+          const current = getLogs();
+          setLogs({ ...current, ...incoming });
+          renderEntries();
+          alert('匯入完成。相同日期會被匯入檔覆蓋。');
+        } catch {
+          alert('匯入失敗：不是有效 JSON。');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    $('unlockBtn').addEventListener('click', unlock);
+    $('lockBtn').addEventListener('click', lock);
+    $('resetLockBtn').addEventListener('click', resetLock);
+    $('saveBtn').addEventListener('click', saveEntry);
+    $('clearFormBtn').addEventListener('click', clearForm);
+    $('fillTodayBtn').addEventListener('click', fillTodayExample);
+    $('gmailCode').addEventListener('input', updateCodeStatus);
+    $('date').addEventListener('change', updateCodeStatus);
+    $('copyReportBtn').addEventListener('click', async () => {
+      await navigator.clipboard.writeText($('chatReport').value);
+      alert('已複製回報文字。');
+    });
+    $('exportBtn').addEventListener('click', exportLogs);
+    $('importBtn').addEventListener('click', () => $('importFile').click());
+    $('importFile').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) importLogs(file);
+      e.target.value = '';
+    });
+
+    $('date').value = todayISO();
+    setUnlockedUI(false);
+  </script>
+</body>
+</html>
