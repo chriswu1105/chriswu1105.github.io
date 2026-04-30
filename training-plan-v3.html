@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飲食與訓練計畫 | 減脂與爆發力</title>
+  <meta name="description" content="減脂、外食管理、爆發式耐力訓練、力量維持與划船機心肺計畫。">
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --accent: #2563eb;
+      --accent-2: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --accent-soft-2: #dbeafe;
+      --good: #0f766e;
+      --warn: #b45309;
+      --danger: #b91c1c;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans TC", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+    }
+    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
+    header.hero {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #eff6ff, #ffffff 62%, #f8fafc);
+      padding: 56px 20px 42px;
+    }
+    .container { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    h1 { margin: 0 0 14px; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.15; letter-spacing: -0.04em; }
+    .lead { color: var(--muted); max-width: 760px; margin: 0; font-size: 1.05rem; }
+    .hero-panel, section.block, .toc, .day-card, .metric {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .hero-panel { border-radius: var(--radius); padding: 22px; }
+    .hero-panel h2 { font-size: 1.05rem; margin: 0 0 12px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .pill {
+      border: 1px solid var(--accent-soft-2);
+      background: #ffffff;
+      color: var(--accent-2);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 6px 10px;
+    }
+    main { padding: 34px 0 64px; }
+    .page-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
+    .toc { position: sticky; top: 76px; border-radius: var(--radius); padding: 18px; }
+    .toc h2 { font-size: 1rem; margin: 0 0 10px; }
+    .toc a { display: block; color: var(--muted); text-decoration: none; padding: 7px 0; font-weight: 700; font-size: 0.92rem; }
+    .toc a:hover { color: var(--accent); }
+    section.block { border-radius: var(--radius); padding: 28px; margin-bottom: 22px; }
+    section.block h2 { margin: 0 0 18px; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; }
+    h3 { margin: 22px 0 8px; font-size: 1.1rem; }
+    p { margin: 0 0 12px; }
+    ul { padding-left: 1.25rem; margin: 8px 0 0; }
+    li { margin: 0 0 10px; }
+    strong { color: var(--text); }
+    .callout { border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 14px; padding: 14px 16px; margin: 16px 0; }
+    .callout.good { border-color: var(--good); background: #ecfdf5; }
+    .callout.warn { border-color: var(--warn); background: #fffbeb; }
+    .callout.danger { border-color: var(--danger); background: #fef2f2; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 18px 0; }
+    .metric { border-radius: 16px; padding: 14px; background: #fbfdff; }
+    .metric span { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 4px; }
+    .metric b { font-size: 1.05rem; }
+    .day-card { border-radius: 16px; padding: 18px; background: #fbfdff; margin-top: 14px; }
+    .day-card h3 { margin-top: 0; }
+    .mini-label {
+      display: inline-block;
+      color: var(--accent-2);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-soft-2);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    footer { border-top: 1px solid var(--line); padding: 20px; color: var(--muted); text-align: center; }
+    @media (max-width: 860px) { .hero-grid, .page-layout { grid-template-columns: 1fr; } .toc { position: static; } }
+    @media (max-width: 640px) { .nav-inner { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; } section.block { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="主導覽列">
+    <div class="nav-inner">
+      <a class="brand" href="/">減脂與訓練</a>
+      <div class="nav-links">
+        <a href="/">首頁</a>
+        <a class="active" href="/training-plan-v3.html">飲食與訓練計畫</a>
+        <a href="/training-plan/daily-log.html">每日登記</a>
+        <a href="/lovable/index.html">Lovable 子頁面</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>飲食與訓練控制計畫</h1>
+        <p class="lead">此頁只保留與減脂和訓練決策直接相關的資料：身高、體重區間、熱量與營養目標、外食策略、課表與調整規則。每日細節以 Google 表單與試算表保存，不公開放在網頁上。</p>
+        <div class="pill-row">
+          <span class="pill">減脂優先</span>
+          <span class="pill">爆發式耐力</span>
+          <span class="pill">外食可執行</span>
+          <span class="pill">划船機心肺</span>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="快速摘要">
+        <h2>必要設定</h2>
+        <p><strong>身高：</strong>174 cm</p>
+        <p><strong>目前體重：</strong>約 81–82 kg 區間</p>
+        <p><strong>主要目標：</strong>減脂、維持肌肉與提升划船心肺</p>
+        <p><strong>訓練頻率：</strong>每週 3–4 次</p>
+        <p><strong>飲食模式：</strong>兩餐制外食，蛋白質優先</p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-layout">
+      <aside class="toc" aria-label="頁面目錄">
+        <h2>頁面目錄</h2>
+        <a href="#nutrition">一、每日營養目標</a>
+        <a href="#food">二、外食與預算配置</a>
+        <a href="#training-analysis">三、運動目標與分析</a>
+        <a href="#weekly-plan">四、課表調整版</a>
+        <a href="#review">五、檢查與調整建議</a>
+      </aside>
+
+      <div>
+        <section class="block" id="nutrition">
+          <h2>一、每日營養目標</h2>
+          <div class="metric-grid">
+            <div class="metric"><span>訓練日熱量</span><b>1900–2000 kcal</b></div>
+            <div class="metric"><span>休息日熱量</span><b>1650–1750 kcal</b></div>
+            <div class="metric"><span>每日蛋白質</span><b>140–160 g</b></div>
+            <div class="metric"><span>每日預算</span><b>約 NT$250</b></div>
+          </div>
+          <h3>能量目標</h3>
+          <p>訓練日每日攝取 1900–2000 kcal，休息日 1650–1750 kcal，平均每日約 1800–1850 kcal。目標是形成穩定熱量赤字，但保留足夠能量完成重訓與划船。</p>
+          <h3>蛋白質目標</h3>
+          <p>每日 140–160 g，不區分訓練日與休息日。若現實外食難以達標，至少先穩定達到 120 g，再逐步往 140 g 以上推進。</p>
+          <h3>碳水化合物目標</h3>
+          <p>訓練日 180–220 g，休息日 90–140 g。碳水集中在訓練前後，訓練無力時優先增加半碗飯、地瓜或香蕉，不先增加油脂。</p>
+          <h3>脂肪目標</h3>
+          <p>訓練日 50–70 g，休息日 60–80 g。雞排、香腸、炸物、豆皮、火鍋料、王子麵與丸類容易讓脂肪超標，需控制頻率。</p>
+          <h3>鈉、糖與飲料</h3>
+          <p>每日鈉量盡量控制在 2000 mg 以下。添加糖以 30–40 g 內為目標。咖啡和無糖飲料可保留，但拿鐵、含糖茶與甜飲需列入每日熱量。</p>
+        </section>
+
+        <section class="block" id="food">
+          <h2>二、外食與預算配置</h2>
+          <div class="callout good">
+            <strong>外食核心：</strong>一般外食為主，超商補充為輔。每餐先確認蛋白質，再決定澱粉與油脂。
+          </div>
+          <h3>訓練日吃法</h3>
+          <ul>
+            <li><strong>便當/自助餐：</strong>主菜優先選去皮雞腿、雞胸、魚、豆腐或滷肉較少油的版本。若選雞排或蜜汁類，當天其他脂肪要下降。</li>
+            <li><strong>麵類餐：</strong>可選清燉牛肉麵或鴨血豆腐麵，麵量不加大，湯少喝，加蛋或豆乾補蛋白。</li>
+            <li><strong>滷味：</strong>可作主力外食之一。優先選大豆乾、小豆乾、板豆腐、凍豆腐、鴨血、白蘿蔔、高麗菜、小白菜；火鍋料控制在 0–1 個。</li>
+            <li><strong>訓練後補充：</strong>無糖豆漿、茶葉蛋、雞胸、豆乾優先。雞Q丸和香腸可偶爾吃，但不要當成主要蛋白質來源。</li>
+          </ul>
+          <h3>休息日吃法</h3>
+          <ul>
+            <li><strong>飯量下降：</strong>休息日飯量約半碗至 2/3 碗，蛋白質不下降。</li>
+            <li><strong>油脂下降：</strong>避免同一天出現雞排、香腸、丸類、炸物與厚醬。</li>
+            <li><strong>滷味休息日版本：</strong>不加麵或少量冬粉，多選豆腐、豆乾、蛋、青菜與白蘿蔔。</li>
+          </ul>
+        </section>
+
+        <section class="block" id="training-analysis">
+          <h2>三、運動目標與分析</h2>
+          <h3>爆發式耐力的節奏</h3>
+          <div class="callout warn">
+            <strong>動作原則：</strong>快拉慢放、快推慢收。發力段快，回程段控制；不是快拉快放，也不是用甩的完成動作。
+          </div>
+          <ul>
+            <li><strong>大動作爆發：</strong>腿推、哈克深蹲、胸推、坐姿划船與下拉可用 40–60% PR，每組 5–6 下，休息 90–120 秒。</li>
+            <li><strong>小肌群輔助：</strong>二頭、三頭、側腹、腿內外側不需要追求爆發極限。採「向心稍快、頂端停、離心慢」即可。</li>
+            <li><strong>不要力竭：</strong>爆發力訓練要保留 1–2 下餘裕。速度明顯下降時，該組停止。</li>
+          </ul>
+          <h3>划船機分級</h3>
+          <ul>
+            <li><strong>高強度突破日：</strong>一週最多 1 次。15 分鐘距離或配速突破，疲勞可到 8–9/10，但隔天必須降強度。</li>
+            <li><strong>穩態心肺日：</strong>15–20 分鐘，spm 24–28，疲勞 5–6/10。</li>
+            <li><strong>恢復技術日：</strong>10–15 分鐘，spm 22–26，疲勞 4/10 以下，只練節奏與流暢度。</li>
+          </ul>
+        </section>
+
+        <section class="block" id="weekly-plan">
+          <h2>四、課表調整版：高強度划船後的本週安排</h2>
+          <div class="callout good">
+            <strong>調整依據：</strong>近期已完成手臂、側腹、大腿內外側輔助訓練，並做過 15 分鐘 3.04 km 的高強度划船突破。由於划船疲勞接近 9/10，下一訓練日不安排破紀錄型心肺，也不堆疊高疲勞腿訓練。
+          </div>
+
+          <article class="day-card">
+            <span class="mini-label">已完成</span>
+            <h3>輔助肌群 + 高強度划船日</h3>
+            <ul>
+              <li><strong>定位：</strong>二頭、三頭、側腹、大腿內外側輔助訓練，加上高強度划船突破。</li>
+              <li><strong>重訓判斷：</strong>輔助肌群完成度可接受，但小肌群動作不追求爆發極限，下一次以乾淨控制為主。</li>
+              <li><strong>划船判斷：</strong>15 分鐘 3.04 km 屬於明顯突破；疲勞 9/10，因此列為本週高強度突破日。</li>
+            </ul>
+          </article>
+
+          <article class="day-card">
+            <span class="mini-label">下一日</span>
+            <h3>恢復日 / 低強度活動</h3>
+            <ul>
+              <li><strong>活動：</strong>散步 20–30 分鐘，或低強度腳踏車 10–15 分鐘。</li>
+              <li><strong>划船：</strong>可選恢復技術划 10 分鐘，spm 22–26，疲勞控制在 4/10 以下；不追距離。</li>
+              <li><strong>伸展：</strong>腿後腱、髂腰肌、胸肩伸展，各 30–45 秒。</li>
+              <li><strong>按摩：</strong>花生球放鬆小腿、臀部、上背 5–10 分鐘。</li>
+              <li><strong>飲食：</strong>高蛋白、低油脂。避免雞排、香腸、炸物、丸類與厚醬重複出現。</li>
+            </ul>
+          </article>
+
+          <article class="day-card">
+            <span class="mini-label">下一個正式訓練日</span>
+            <h3>下肢爆發與力量：中等量版本</h3>
+            <ul>
+              <li><strong>暖身：</strong>划船機 5 分鐘，spm 22–26；髖部活動、臀橋、腿後側動態拉伸。</li>
+              <li><strong>爆發：</strong>腿推機爆發推 4 組 × 5–6 下，40–55% PR。快推、慢收，不鎖死膝蓋。</li>
+              <li><strong>主力：</strong>哈克深蹲或腿推 3 組 × 6 下，保留 1–2 下餘裕。</li>
+              <li><strong>後鏈：</strong>羅馬尼亞硬舉 3 組 × 6–8 下，或腿後腱捲曲 3 組 × 8–10 下。</li>
+              <li><strong>核心：</strong>棒式 3 組 × 30–40 秒，反向卷腹 2 組 × 12 下。</li>
+              <li><strong>心肺：</strong>只做穩態划 8–12 分鐘，spm 24–28，疲勞不超過 6/10。</li>
+            </ul>
+          </article>
+
+          <article class="day-card">
+            <span class="mini-label">全身整合日</span>
+            <h3>低上肢量 + 技術心肺</h3>
+            <ul>
+              <li><strong>暖身：</strong>低強度單車或划船 8–10 分鐘，動態伸展。</li>
+              <li><strong>爆發：</strong>器械胸推爆發 2–3 組 × 5–6 下；坐姿划船爆發拉 2–3 組 × 5–6 下。</li>
+              <li><strong>力量：</strong>肩推機 3 組 × 6–8 下；下拉或坐姿划船輕量 2 組 × 8 下。</li>
+              <li><strong>輔助：</strong>二頭、三頭各 2 組即可，避免再堆高小肌群疲勞。</li>
+              <li><strong>划船：</strong>技術日 10–15 分鐘，spm 22–26，專注動作順序與呼吸。</li>
+              <li><strong>原則：</strong>此日重點是恢復節奏與維持動作，不再破划船紀錄。</li>
+            </ul>
+          </article>
+
+          <article class="day-card">
+            <span class="mini-label">週末或彈性日</span>
+            <h3>視恢復狀況二選一</h3>
+            <ul>
+              <li><strong>恢復良好：</strong>做穩態划船 15–20 分鐘，spm 24–28，疲勞 5–6/10。</li>
+              <li><strong>恢復普通：</strong>散步 30 分鐘 + 花生球按摩 + 基本伸展。</li>
+              <li><strong>恢復很差：</strong>完全休息，飲食回到高蛋白、低油脂、適量碳水。</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="block" id="review">
+          <h2>五、檢查與調整建議</h2>
+          <h3>每週檢查指標</h3>
+          <ul>
+            <li>七日平均體重與腰圍。</li>
+            <li>蛋白質是否至少穩定達到 120 g，理想逐步推向 140 g 以上。</li>
+            <li>每週高油餐、高鈉餐、甜食與含糖飲次數。</li>
+            <li>划船 15 分鐘距離、平均配速、平均 spm 與疲勞分數。</li>
+            <li>睡眠品質、精神、飢餓感、訓練後疲勞與疼痛。</li>
+          </ul>
+          <h3>調整規則</h3>
+          <ul>
+            <li><strong>划船疲勞 ≥ 8/10：</strong>下一日必須降強度，做恢復日或技術日。</li>
+            <li><strong>睡眠差且頭重：</strong>當天不做破紀錄型划船，也不做高疲勞腿訓練。</li>
+            <li><strong>兩週體重無下降：</strong>優先檢查油脂來源，例如雞排、香腸、丸類、厚醬、豆皮與炸物。</li>
+            <li><strong>訓練無力：</strong>先增加訓練前後碳水，不先增加油脂。</li>
+            <li><strong>關節或肌腱不適：</strong>降低小肌群爆發速度，改成向心穩定、離心控制。</li>
+          </ul>
+          <div class="callout good">
+            <strong>總結：</strong>目前方向是減脂優先、蛋白質穩定、划船分級、爆發訓練控量。高強度划船已經有突破，因此下一階段重點不是每天破紀錄，而是讓高強度、穩態與恢復日輪替，避免疲勞堆積。
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026. Training plan page built with plain HTML and CSS.
+  </footer>
+</body>
+</html>
