@@ -32,6 +32,7 @@
         var(--bg);
       color: var(--text);
       line-height: 1.75;
+      overflow-wrap: anywhere;
     }
     .site-nav {
       position: sticky;
@@ -49,9 +50,10 @@
       justify-content: space-between;
       gap: 16px;
       padding: 12px 0;
+      min-width: 0;
     }
-    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.04em; }
-    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
@@ -59,6 +61,7 @@
       font-weight: 700;
       padding: 8px 10px;
       border-radius: 10px;
+      white-space: nowrap;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
     header.hero {
@@ -98,7 +101,7 @@
     .toc h2 { font-size: 1rem; margin: 0 0 10px; }
     .toc a { display: block; color: var(--muted); text-decoration: none; padding: 7px 0; font-weight: 700; font-size: 0.92rem; }
     .toc a:hover { color: var(--accent); }
-    section.block { border-radius: var(--radius); padding: 28px; margin-bottom: 22px; }
+    section.block { border-radius: var(--radius); padding: 28px; margin-bottom: 22px; min-width: 0; }
     section.block h2 { margin: 0 0 18px; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; }
     h3 { margin: 22px 0 8px; font-size: 1.1rem; }
     p { margin: 0 0 12px; }
@@ -113,7 +116,7 @@
     .metric { border-radius: 16px; padding: 14px; background: #fbfdff; }
     .metric span { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 4px; }
     .metric b { font-size: 1.05rem; }
-    .day-card { border-radius: 16px; padding: 18px; background: #fbfdff; margin-top: 14px; }
+    .day-card { border-radius: 16px; padding: 18px; background: #fbfdff; margin-top: 14px; min-width: 0; }
     .day-card h3 { margin-top: 0; }
     .mini-label {
       display: inline-block;
@@ -128,7 +131,13 @@
     }
     footer { border-top: 1px solid var(--line); padding: 20px; color: var(--muted); text-align: center; }
     @media (max-width: 860px) { .hero-grid, .page-layout { grid-template-columns: 1fr; } .toc { position: static; } }
-    @media (max-width: 640px) { .nav-inner { align-items: flex-start; flex-direction: column; } .nav-links { justify-content: flex-start; } section.block { padding: 22px; } }
+    @media (max-width: 640px) {
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .nav-links { justify-content: flex-start; gap: 6px; }
+      .nav-links a { font-size: 0.88rem; padding: 6px 8px; white-space: normal; }
+      section.block { padding: 22px; }
+      .container { width: min(100% - 24px, 1080px); }
+    }
   </style>
 </head>
 <body>
@@ -192,9 +201,9 @@
           <h3>蛋白質目標</h3>
           <p>每日 140–160 g，不區分訓練日與休息日。若現實外食難以達標，至少先穩定達到 120 g，再逐步往 140 g 以上推進。</p>
           <h3>碳水化合物目標</h3>
-          <p>訓練日 180–220 g，休息日 90–140 g。碳水集中在訓練前後，訓練無力時優先增加半碗飯、地瓜或香蕉，不先增加油脂。</p>
+          <p>訓練日 180–220 g，休息日 90–140 g。碳水集中在訓練前後；高強度有氧或腿訓前可保留一份乾淨碳水，不要用炸物補能量。</p>
           <h3>脂肪目標</h3>
-          <p>訓練日 50–70 g，休息日 60–80 g。雞排、香腸、炸物、豆皮、火鍋料、王子麵與丸類容易讓脂肪超標，需控制頻率。</p>
+          <p>訓練日 50–70 g，休息日 60–80 g。雞排、香腸、炸物、豆皮、火鍋料、王子麵、洋蔥圈與丸類容易讓脂肪超標，需控制頻率。</p>
           <h3>鈉、糖與飲料</h3>
           <p>每日鈉量盡量控制在 2000 mg 以下。添加糖以 30–40 g 內為目標。咖啡和無糖飲料可保留，但拿鐵、含糖茶與甜飲需列入每日熱量。</p>
         </section>
@@ -206,15 +215,16 @@
           </div>
           <h3>訓練日吃法</h3>
           <ul>
+            <li><strong>波奇碗：</strong>可作優先外食。基底建議半生菜半澱粉，蛋白質至少雙份豆腐或額外加雞胸；醬料另外裝或少量。</li>
             <li><strong>便當/自助餐：</strong>主菜優先選去皮雞腿、雞胸、魚、豆腐或滷肉較少油的版本。若選雞排或蜜汁類，當天其他脂肪要下降。</li>
-            <li><strong>麵類餐：</strong>可選清燉牛肉麵或鴨血豆腐麵，麵量不加大，湯少喝，加蛋或豆乾補蛋白。</li>
             <li><strong>滷味：</strong>可作主力外食之一。優先選大豆乾、小豆乾、板豆腐、凍豆腐、鴨血、白蘿蔔、高麗菜、小白菜；火鍋料控制在 0–1 個。</li>
+            <li><strong>速食：</strong>可偶爾安排在訓練日前後，但洋蔥圈、薯條、雙層漢堡與醬料會快速吃掉脂肪額度。</li>
             <li><strong>訓練後補充：</strong>無糖豆漿、茶葉蛋、雞胸、豆乾優先。雞Q丸和香腸可偶爾吃，但不要當成主要蛋白質來源。</li>
           </ul>
           <h3>休息日吃法</h3>
           <ul>
             <li><strong>飯量下降：</strong>休息日飯量約半碗至 2/3 碗，蛋白質不下降。</li>
-            <li><strong>油脂下降：</strong>避免同一天出現雞排、香腸、丸類、炸物與厚醬。</li>
+            <li><strong>油脂下降：</strong>避免同一天出現雞排、香腸、丸類、炸物、洋蔥圈與厚醬。</li>
             <li><strong>滷味休息日版本：</strong>不加麵或少量冬粉，多選豆腐、豆乾、蛋、青菜與白蘿蔔。</li>
           </ul>
         </section>
@@ -228,41 +238,42 @@
           <ul>
             <li><strong>大動作爆發：</strong>腿推、哈克深蹲、胸推、坐姿划船與下拉可用 40–60% PR，每組 5–6 下，休息 90–120 秒。</li>
             <li><strong>小肌群輔助：</strong>二頭、三頭、側腹、腿內外側不需要追求爆發極限。採「向心稍快、頂端停、離心慢」即可。</li>
+            <li><strong>肩膀警訊：</strong>擦背或手臂後伸時肩膀卡痛，代表短期內不要加重夾胸、上胸推、肩推與過深伸展。先用低負荷活動度與熱身確認是否可訓練。</li>
             <li><strong>不要力竭：</strong>爆發力訓練要保留 1–2 下餘裕。速度明顯下降時，該組停止。</li>
           </ul>
           <h3>划船機分級</h3>
           <ul>
-            <li><strong>高強度突破日：</strong>一週最多 1 次。15 分鐘距離或配速突破，疲勞可到 8–9/10，但隔天必須降強度。</li>
+            <li><strong>高強度突破日：</strong>一週最多 1 次。15–30 分鐘距離或配速突破，疲勞可到 6–8/10；若超過 8/10，隔天必須降強度。</li>
             <li><strong>穩態心肺日：</strong>15–20 分鐘，spm 24–28，疲勞 5–6/10。</li>
             <li><strong>恢復技術日：</strong>10–15 分鐘，spm 22–26，疲勞 4/10 以下，只練節奏與流暢度。</li>
           </ul>
         </section>
 
         <section class="block" id="weekly-plan">
-          <h2>四、課表調整版：高強度划船後的本週安排</h2>
+          <h2>四、課表調整版：週六加練有氧後的安排</h2>
           <div class="callout good">
-            <strong>調整依據：</strong>近期已完成手臂、側腹、大腿內外側輔助訓練，並做過 15 分鐘 3.04 km 的高強度划船突破。由於划船疲勞接近 9/10，下一訓練日不安排破紀錄型心肺，也不堆疊高疲勞腿訓練。
+            <strong>最新調整依據：</strong>近期已完成胸背訓練、輔助肌群訓練與週六加練有氧。週六划船 30 分鐘、固定阻力 5、距離 5.57 km、平均配速 2:31、平均 spm 36，另加腳踏車 10 分鐘；整體疲勞中等，但肩膀出現卡痛。下一步重點是保留心肺進展，同時避免肩膀與胸背過度堆疊。
           </div>
 
           <article class="day-card">
             <span class="mini-label">已完成</span>
-            <h3>輔助肌群 + 高強度划船日</h3>
+            <h3>週六加練：高量有氧日</h3>
             <ul>
-              <li><strong>定位：</strong>二頭、三頭、側腹、大腿內外側輔助訓練，加上高強度划船突破。</li>
-              <li><strong>重訓判斷：</strong>輔助肌群完成度可接受，但小肌群動作不追求爆發極限，下一次以乾淨控制為主。</li>
-              <li><strong>划船判斷：</strong>15 分鐘 3.04 km 屬於明顯突破；疲勞 9/10，因此列為本週高強度突破日。</li>
+              <li><strong>內容：</strong>划船 30 分鐘 + 腳踏車 10 分鐘。</li>
+              <li><strong>判斷：</strong>30 分鐘划船完成度很好，代表心肺耐受度上升；但平均 spm 36 偏高，長期應降低到 28–32 來換取更穩定的划船效率。</li>
+              <li><strong>飲食觀察：</strong>訓練前有碳水與較高熱量餐，確實可能改善有氧輸出。但這不是每天都需要速食，之後用波奇碗、飯、地瓜或香蕉補碳水會更乾淨。</li>
+              <li><strong>肩膀警訊：</strong>擦背時肩膀卡痛，短期內避免大重量上胸推、夾胸、肩推與過度後伸。</li>
             </ul>
           </article>
 
           <article class="day-card">
             <span class="mini-label">下一日</span>
-            <h3>恢復日 / 低強度活動</h3>
+            <h3>恢復日 / 肩膀觀察日</h3>
             <ul>
-              <li><strong>活動：</strong>散步 20–30 分鐘，或低強度腳踏車 10–15 分鐘。</li>
-              <li><strong>划船：</strong>可選恢復技術划 10 分鐘，spm 22–26，疲勞控制在 4/10 以下；不追距離。</li>
-              <li><strong>伸展：</strong>腿後腱、髂腰肌、胸肩伸展，各 30–45 秒。</li>
-              <li><strong>按摩：</strong>花生球放鬆小腿、臀部、上背 5–10 分鐘。</li>
-              <li><strong>飲食：</strong>高蛋白、低油脂。避免雞排、香腸、炸物、丸類與厚醬重複出現。</li>
+              <li><strong>活動：</strong>散步 20–30 分鐘，或完全休息。</li>
+              <li><strong>肩膀：</strong>做肩胛後收、肩胛繞圈、胸椎伸展，各 2–3 組；不做疼痛角度的硬拉伸。</li>
+              <li><strong>划船：</strong>若想動，只做 10 分鐘恢復技術划，spm 22–26，疲勞 4/10 以下。</li>
+              <li><strong>飲食：</strong>高蛋白、低油脂、低加工。若前一天有洋蔥圈或速食，今天避免炸物與厚醬。</li>
             </ul>
           </article>
 
@@ -270,7 +281,7 @@
             <span class="mini-label">下一個正式訓練日</span>
             <h3>下肢爆發與力量：中等量版本</h3>
             <ul>
-              <li><strong>暖身：</strong>划船機 5 分鐘，spm 22–26；髖部活動、臀橋、腿後側動態拉伸。</li>
+              <li><strong>暖身：</strong>腳踏車或划船 5 分鐘，spm 22–26；髖部活動、臀橋、腿後側動態拉伸。</li>
               <li><strong>爆發：</strong>腿推機爆發推 4 組 × 5–6 下，40–55% PR。快推、慢收，不鎖死膝蓋。</li>
               <li><strong>主力：</strong>哈克深蹲或腿推 3 組 × 6 下，保留 1–2 下餘裕。</li>
               <li><strong>後鏈：</strong>羅馬尼亞硬舉 3 組 × 6–8 下，或腿後腱捲曲 3 組 × 8–10 下。</li>
@@ -280,25 +291,35 @@
           </article>
 
           <article class="day-card">
-            <span class="mini-label">全身整合日</span>
-            <h3>低上肢量 + 技術心肺</h3>
+            <span class="mini-label">上肢恢復版</span>
+            <h3>低肩壓胸背日</h3>
             <ul>
-              <li><strong>暖身：</strong>低強度單車或划船 8–10 分鐘，動態伸展。</li>
-              <li><strong>爆發：</strong>器械胸推爆發 2–3 組 × 5–6 下；坐姿划船爆發拉 2–3 組 × 5–6 下。</li>
-              <li><strong>力量：</strong>肩推機 3 組 × 6–8 下；下拉或坐姿划船輕量 2 組 × 8 下。</li>
-              <li><strong>輔助：</strong>二頭、三頭各 2 組即可，避免再堆高小肌群疲勞。</li>
-              <li><strong>划船：</strong>技術日 10–15 分鐘，spm 22–26，專注動作順序與呼吸。</li>
-              <li><strong>原則：</strong>此日重點是恢復節奏與維持動作，不再破划船紀錄。</li>
+              <li><strong>前提：</strong>肩膀後伸或擦背動作不再刺痛，才進入此日。</li>
+              <li><strong>拉：</strong>坐姿划船 3 組 × 8 下，中輕重量，快拉慢放，不聳肩。</li>
+              <li><strong>推：</strong>器械胸推 2–3 組 × 6–8 下，重量降一級，不做夾胸、不做過深上胸推。</li>
+              <li><strong>輔助：</strong>下拉 2 組 × 8 下；二頭、三頭各 2 組即可。</li>
+              <li><strong>心肺：</strong>技術划 10–15 分鐘，spm 24–28，不破紀錄。</li>
+              <li><strong>原則：</strong>肩膀任何刺痛、卡住、越做越痛，立刻停止推類與夾胸。</li>
             </ul>
           </article>
 
           <article class="day-card">
-            <span class="mini-label">週末或彈性日</span>
-            <h3>視恢復狀況二選一</h3>
+            <span class="mini-label">本週第二次心肺</span>
+            <h3>穩態划船日</h3>
             <ul>
-              <li><strong>恢復良好：</strong>做穩態划船 15–20 分鐘，spm 24–28，疲勞 5–6/10。</li>
+              <li><strong>目標：</strong>15–20 分鐘，固定阻力 5–8，spm 28–32，疲勞 5–6/10。</li>
+              <li><strong>任務：</strong>不要再追 36 spm；重點改成每一下腿推、髖折、手拉的順序穩定。</li>
+              <li><strong>完成標準：</strong>配速穩定、呼吸可控、結束後不是爆掉。</li>
+            </ul>
+          </article>
+
+          <article class="day-card">
+            <span class="mini-label">彈性日</span>
+            <h3>依恢復狀況二選一</h3>
+            <ul>
+              <li><strong>恢復良好：</strong>做全身整合日，但上肢推量減半，腿推與核心為主。</li>
               <li><strong>恢復普通：</strong>散步 30 分鐘 + 花生球按摩 + 基本伸展。</li>
-              <li><strong>恢復很差：</strong>完全休息，飲食回到高蛋白、低油脂、適量碳水。</li>
+              <li><strong>恢復很差或肩痛未退：</strong>完全休息，維持高蛋白與充足水分。</li>
             </ul>
           </article>
         </section>
@@ -310,19 +331,19 @@
             <li>七日平均體重與腰圍。</li>
             <li>蛋白質是否至少穩定達到 120 g，理想逐步推向 140 g 以上。</li>
             <li>每週高油餐、高鈉餐、甜食與含糖飲次數。</li>
-            <li>划船 15 分鐘距離、平均配速、平均 spm 與疲勞分數。</li>
+            <li>划船 15–30 分鐘距離、平均配速、平均 spm 與疲勞分數。</li>
             <li>睡眠品質、精神、飢餓感、訓練後疲勞與疼痛。</li>
           </ul>
           <h3>調整規則</h3>
           <ul>
+            <li><strong>肩膀卡痛：</strong>暫停夾胸、重上胸推、肩推與疼痛角度伸展；48–72 小時內觀察是否改善。</li>
             <li><strong>划船疲勞 ≥ 8/10：</strong>下一日必須降強度，做恢復日或技術日。</li>
-            <li><strong>睡眠差且頭重：</strong>當天不做破紀錄型划船，也不做高疲勞腿訓練。</li>
-            <li><strong>兩週體重無下降：</strong>優先檢查油脂來源，例如雞排、香腸、丸類、厚醬、豆皮與炸物。</li>
+            <li><strong>平均 spm 過高：</strong>30 分鐘划船不要長期維持 36 spm，優先練 28–32 spm 的穩定輸出。</li>
+            <li><strong>兩週體重無下降：</strong>優先檢查油脂來源，例如雞排、香腸、丸類、厚醬、豆皮、洋蔥圈與炸物。</li>
             <li><strong>訓練無力：</strong>先增加訓練前後碳水，不先增加油脂。</li>
-            <li><strong>關節或肌腱不適：</strong>降低小肌群爆發速度，改成向心穩定、離心控制。</li>
           </ul>
           <div class="callout good">
-            <strong>總結：</strong>目前方向是減脂優先、蛋白質穩定、划船分級、爆發訓練控量。高強度划船已經有突破，因此下一階段重點不是每天破紀錄，而是讓高強度、穩態與恢復日輪替，避免疲勞堆積。
+            <strong>總結：</strong>目前心肺表現正在上升，代表碳水與能量補充確實會影響訓練輸出；但減脂仍要避免用高脂速食作為常態燃料。下週主軸是下肢爆發、低肩壓上肢恢復、穩態划船與作息修復。
           </div>
         </section>
       </div>
