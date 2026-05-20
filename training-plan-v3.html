@@ -4,146 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 個人化訓練計畫 v3 | 減脂與體能重建</title>
-  <meta name="description" content="2026 一週五練訓練計畫：40分鐘重量訓練、20分鐘負重核心、20分鐘有氧，搭配居家徒手核心。">
+  <meta name="description" content="2026 一週五練訓練計畫：40分鐘重量訓練、20分鐘負重核心、20分鐘有氧，搭配居家徒手核心與保守 TDEE 熱量赤字表。">
   <style>
-    :root {
-      --bg: #f7f8fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #d1d5db;
-      --accent: #2563eb;
-      --accent-2: #1d4ed8;
-      --accent-soft: #eff6ff;
-      --accent-soft-2: #dbeafe;
-      --good: #0f766e;
-      --warn: #b45309;
-      --danger: #b91c1c;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, "Noto Sans TC", sans-serif;
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.10), transparent 32rem), var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-      overflow-wrap: anywhere;
-    }
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.92);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
-    .nav-inner {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 12px 0;
-    }
-    .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; }
-    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 8px 10px;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
-    header.hero {
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, #eff6ff, #ffffff 62%, #f8fafc);
-      padding: 54px 20px 40px;
-    }
-    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-    h1 { margin: 0 0 14px; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.15; letter-spacing: -0.04em; }
-    .lead { color: var(--muted); max-width: 820px; margin: 0; font-size: 1.05rem; }
-    .hero-panel, section.block, .toc, .day-card, .metric, .note-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .hero-panel { border-radius: var(--radius); padding: 22px; }
-    .hero-panel h2 { font-size: 1.05rem; margin: 0 0 12px; }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .pill {
-      border: 1px solid var(--accent-soft-2);
-      background: #ffffff;
-      color: var(--accent-2);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 6px 10px;
-    }
-    main { padding: 34px 0 64px; }
-    .page-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
-    .toc { position: sticky; top: 76px; border-radius: var(--radius); padding: 18px; }
-    .toc h2 { font-size: 1rem; margin: 0 0 10px; }
-    .toc a { display: block; color: var(--muted); text-decoration: none; padding: 7px 0; font-weight: 700; font-size: 0.92rem; }
-    .toc a:hover { color: var(--accent); }
-    section.block { border-radius: var(--radius); padding: 28px; margin-bottom: 22px; min-width: 0; }
-    section.block h2 { margin: 0 0 18px; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; }
-    h3 { margin: 22px 0 8px; font-size: 1.1rem; }
-    p { margin: 0 0 12px; }
-    ul { padding-left: 1.25rem; margin: 8px 0 0; }
-    li { margin: 0 0 8px; }
-    strong { color: var(--text); }
-    .callout { border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 14px; padding: 14px 16px; margin: 16px 0; }
-    .callout.good { border-color: var(--good); background: #ecfdf5; }
-    .callout.warn { border-color: var(--warn); background: #fffbeb; }
-    .callout.danger { border-color: var(--danger); background: #fef2f2; }
-    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 18px 0; }
-    .metric { border-radius: 16px; padding: 14px; background: #fbfdff; }
-    .metric span { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 4px; }
-    .metric b { font-size: 1.05rem; }
-    .day-card { border-radius: 16px; padding: 18px; background: #fbfdff; margin-top: 18px; min-width: 0; }
-    .day-card h3 { margin-top: 0; }
-    .mini-label {
-      display: inline-block;
-      color: var(--accent-2);
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-soft-2);
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: #fff; margin-top: 12px; }
-    table { width: 100%; border-collapse: collapse; min-width: 760px; }
-    th, td { border-bottom: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
-    th { background: var(--accent-soft); color: var(--accent-2); font-size: 0.92rem; white-space: nowrap; }
-    tr:last-child td { border-bottom: 0; }
-    td:first-child { font-weight: 800; color: var(--accent-2); white-space: nowrap; }
-    .goal-table td:first-child { width: 150px; }
-    .block-tag { font-weight: 800; color: var(--good); white-space: nowrap; }
-    .subtle { color: var(--muted); font-size: 0.95rem; }
-    footer { border-top: 1px solid var(--line); padding: 20px; color: var(--muted); text-align: center; }
-    @media (max-width: 860px) { .hero-grid, .page-layout { grid-template-columns: 1fr; } .toc { position: static; } }
-    @media (max-width: 640px) {
-      .nav-inner { align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; gap: 6px; }
-      .nav-links a { font-size: 0.88rem; padding: 6px 8px; white-space: normal; }
-      section.block { padding: 22px; }
-      .container { width: min(100% - 24px, 1180px); }
-    }
+    :root{--bg:#f7f8fb;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#d1d5db;--accent:#2563eb;--accent-2:#1d4ed8;--accent-soft:#eff6ff;--accent-soft-2:#dbeafe;--good:#0f766e;--warn:#b45309;--danger:#b91c1c;--shadow:0 10px 30px rgba(15,23,42,.08);--radius:18px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans TC",sans-serif;background:radial-gradient(circle at top left,rgba(37,99,235,.10),transparent 32rem),var(--bg);color:var(--text);line-height:1.75;overflow-wrap:anywhere}.site-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav-inner{width:min(1180px,calc(100% - 32px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}.brand{color:var(--text);font-weight:800;text-decoration:none;letter-spacing:.04em;white-space:nowrap}.nav-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:700;padding:8px 10px;border-radius:10px;white-space:nowrap}.nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--accent-soft)}header.hero{border-bottom:1px solid var(--line);background:linear-gradient(135deg,#eff6ff,#fff 62%,#f8fafc);padding:54px 20px 40px}.container{width:min(1180px,calc(100% - 32px));margin:0 auto}.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:24px;align-items:stretch}h1{margin:0 0 14px;font-size:clamp(2rem,4vw,3.25rem);line-height:1.15;letter-spacing:-.04em}.lead{color:var(--muted);max-width:820px;margin:0;font-size:1.05rem}.hero-panel,section.block,.toc,.day-card,.metric{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}.hero-panel{border-radius:var(--radius);padding:22px}.hero-panel h2{font-size:1.05rem;margin:0 0 12px}.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.pill{border:1px solid var(--accent-soft-2);background:#fff;color:var(--accent-2);border-radius:999px;font-size:.9rem;font-weight:700;padding:6px 10px}main{padding:34px 0 64px}.page-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}.toc{position:sticky;top:76px;border-radius:var(--radius);padding:18px}.toc h2{font-size:1rem;margin:0 0 10px}.toc a{display:block;color:var(--muted);text-decoration:none;padding:7px 0;font-weight:700;font-size:.92rem}.toc a:hover{color:var(--accent)}section.block{border-radius:var(--radius);padding:28px;margin-bottom:22px;min-width:0}section.block h2{margin:0 0 18px;font-size:clamp(1.45rem,2vw,1.9rem);line-height:1.25}h3{margin:22px 0 8px;font-size:1.1rem}p{margin:0 0 12px}ul{padding-left:1.25rem;margin:8px 0 0}li{margin:0 0 8px}strong{color:var(--text)}.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:14px;padding:14px 16px;margin:16px 0}.callout.good{border-color:var(--good);background:#ecfdf5}.callout.warn{border-color:var(--warn);background:#fffbeb}.callout.danger{border-color:var(--danger);background:#fef2f2}.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}.metric{border-radius:16px;padding:14px;background:#fbfdff}.metric span{display:block;color:var(--muted);font-size:.9rem;margin-bottom:4px}.metric b{font-size:1.05rem}.day-card{border-radius:16px;padding:18px;background:#fbfdff;margin-top:18px;min-width:0}.day-card h3{margin-top:0}.mini-label{display:inline-block;color:var(--accent-2);background:var(--accent-soft);border:1px solid var(--accent-soft-2);border-radius:999px;padding:4px 10px;font-size:.82rem;font-weight:800;margin-bottom:10px}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;margin-top:12px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top}th{background:var(--accent-soft);color:var(--accent-2);font-size:.92rem;white-space:nowrap}tr:last-child td{border-bottom:0}td:first-child{font-weight:800;color:var(--accent-2);white-space:nowrap}.goal-table td:first-child{width:150px}.block-tag{font-weight:800;color:var(--good);white-space:nowrap}.subtle{color:var(--muted);font-size:.95rem}footer{border-top:1px solid var(--line);padding:20px;color:var(--muted);text-align:center}@media(max-width:860px){.hero-grid,.page-layout{grid-template-columns:1fr}.toc{position:static}}@media(max-width:640px){.nav-inner{align-items:flex-start;flex-direction:column}.nav-links{justify-content:flex-start;gap:6px}.nav-links a{font-size:.88rem;padding:6px 8px;white-space:normal}section.block{padding:22px}.container{width:min(100% - 24px,1180px)}}
   </style>
 </head>
 <body>
@@ -163,20 +26,21 @@
     <div class="container hero-grid">
       <div>
         <h1>2026 個人化訓練計畫 v3</h1>
-        <p class="lead">此版本整合過去訓練史、近期 5/18 與 5/19 實作回饋，以及目前減脂與體能重建目標。核心原則是：不是練更大，而是變得更穩、更快、更乾淨。</p>
+        <p class="lead">此版本整合過去訓練史、近期 5/18 與 5/19 實作回饋、4/20–5/20 平均步數 3530 步，以及目前減脂與體能重建目標。核心原則是：不是練更大，而是變得更穩、更快、更乾淨。</p>
         <div class="pill-row">
           <span class="pill">一週五練</span>
           <span class="pill">40 分鐘重量</span>
           <span class="pill">20 分鐘負重核心</span>
           <span class="pill">20 分鐘有氧</span>
           <span class="pill">居家徒手核心</span>
+          <span class="pill">低估 TDEE 表</span>
         </div>
       </div>
       <aside class="hero-panel" aria-label="快速摘要">
         <h2>計畫定位</h2>
-        <p><strong>版本：</strong>2026 DEMO v2，先試跑 1–2 週。</p>
+        <p><strong>版本：</strong>2026 DEMO v3，先試跑 1–2 週。</p>
         <p><strong>主軸：</strong>減脂保肌、神經募集、核心穩定、單腳能力、心肺補強。</p>
-        <p><strong>訓練分配：</strong>健身房 80 分鐘 + 居家 8–12 分鐘。</p>
+        <p><strong>熱量估算：</strong>日常平均 3530 步，採低估消耗法，不高估運動熱量。</p>
         <p><strong>一句話：</strong>先穩，再重；先動作品質，再追重量。</p>
       </aside>
     </div>
@@ -190,7 +54,8 @@
         <a href="#rules">二、執行原則</a>
         <a href="#weekly-plan">三、一週五練課表</a>
         <a href="#home-core">四、居家徒手核心</a>
-        <a href="#adjustment">五、調整規則</a>
+        <a href="#energy">五、保守 TDEE 與赤字表</a>
+        <a href="#adjustment">六、調整規則</a>
       </aside>
 
       <div>
@@ -198,12 +63,7 @@
           <h2>一、目前訓練目標</h2>
           <div class="table-wrap">
             <table class="goal-table">
-              <thead>
-                <tr>
-                  <th>目標</th>
-                  <th>目前訓練方向</th>
-                </tr>
-              </thead>
+              <thead><tr><th>目標</th><th>目前訓練方向</th></tr></thead>
               <tbody>
                 <tr><td>減脂但保肌肉</td><td>重量不亂降，保留主項強度，但不堆過量訓練量。</td></tr>
                 <tr><td>避免脂包肌路線</td><td>不做超高容量健美式轟炸，胸、背、腿以維持與功能表現為主。</td></tr>
@@ -215,9 +75,7 @@
               </tbody>
             </table>
           </div>
-          <div class="callout good">
-            <strong>核心判斷：</strong>目前不是沒力量，是穩定還沒跟上力量。所以這份課表會把「出力、抗力、心肺、恢復」分開處理。
-          </div>
+          <div class="callout good"><strong>核心判斷：</strong>目前不是沒力量，是穩定還沒跟上力量。所以這份課表會把「出力、抗力、心肺、恢復」分開處理。</div>
         </section>
 
         <section class="block" id="rules">
@@ -231,147 +89,121 @@
           <p><strong>健身房：</strong>只保留需要器材、負重、輸出與抗力量的內容。</p>
           <p><strong>居家：</strong>把死蟲式、鳥狗式、90/90 呼吸、麥吉爾捲腹、側棒式、熊爬懸停放到有氧後或睡前做。</p>
           <p><strong>強度：</strong>主項多數維持 RPE 7–8，保留 1–3 下餘裕；速度明顯掉、核心晃掉，該組就停止。</p>
-          <p><strong>一句話：</strong>健身房練抗力量，回家練控制與恢復。</p>
+          <p><strong>熱量估算：</strong>每日赤字採保守低估法：TDEE 用下限、攝取用上限計算，避免誤判自己有赤字。</p>
         </section>
 
         <section class="block" id="weekly-plan">
           <h2>三、一週五練課表</h2>
 
-          <article class="day-card" id="day1">
-            <span class="mini-label">Day 1</span>
-            <h3>下肢神經募集＋髖主導</h3>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead>
-                <tbody>
-                  <tr><td class="block-tag">重量訓練</td><td>主項</td><td>Hammer 機械硬舉（Hammer Strength Deadlift）</td><td>45kg×5、65kg×3、85kg×2、95kg×1、100–105kg×1–2，工作組 2 組</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>單腳主項</td><td>後腳抬高分腿蹲（Rear-Foot Elevated Split Squat, RFESS）</td><td>徒手×8，15–20kg×6，3 組</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>輔助</td><td>坐姿腿後勾（Seated Leg Curl）</td><td>2–3 組 × 10 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>抗旋轉</td><td>拉繩抗旋轉推（Cable Pallof Press）</td><td>3 組 × 10 下 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>軀幹剛性</td><td>農夫走路（Farmer’s Walk）</td><td>3 趟 × 30–40 秒</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>2 組 × 10 下 / 邊</td></tr>
-                  <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>登階機（Stair Climber）</td><td>20 分鐘，心率約 135–150</td></tr>
-                  <tr><td class="block-tag">居家徒手核心</td><td>恢復＋控制</td><td>90/90 呼吸（90/90 Breathing）＋ 死蟲式（Dead Bug）</td><td>3 分鐘 + 2 組 × 8 下 / 邊</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
+          <article class="day-card" id="day1"><span class="mini-label">Day 1</span><h3>下肢神經募集＋髖主導</h3><div class="table-wrap"><table><thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead><tbody>
+            <tr><td class="block-tag">重量訓練</td><td>主項</td><td>Hammer 機械硬舉（Hammer Strength Deadlift）</td><td>45kg×5、65kg×3、85kg×2、95kg×1、100–105kg×1–2，工作組 2 組</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>單腳主項</td><td>後腳抬高分腿蹲（Rear-Foot Elevated Split Squat, RFESS）</td><td>徒手×8，15–20kg×6，3 組</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>輔助</td><td>坐姿腿後勾（Seated Leg Curl）</td><td>2–3 組 × 10 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>抗旋轉</td><td>拉繩抗旋轉推（Cable Pallof Press）</td><td>3 組 × 10 下 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>軀幹剛性</td><td>農夫走路（Farmer’s Walk）</td><td>3 趟 × 30–40 秒</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>2 組 × 10 下 / 邊</td></tr>
+            <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>登階機（Stair Climber）</td><td>20 分鐘，心率約 135–150</td></tr>
+            <tr><td class="block-tag">居家徒手核心</td><td>恢復＋控制</td><td>90/90 呼吸＋死蟲式</td><td>3 分鐘 + 2 組 × 8 下 / 邊</td></tr>
+          </tbody></table></div></article>
 
-          <article class="day-card" id="day2">
-            <span class="mini-label">Day 2</span>
-            <h3>上胸＋肩膀線條</h3>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead>
-                <tbody>
-                  <tr><td class="block-tag">重量訓練</td><td>上胸主項</td><td>低角度上斜機械胸推（Low-Incline Machine Chest Press）</td><td>15kg×10、25kg×8、35kg×6，工作組 3 組</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>推力穩定</td><td>槓鈴臥推（Barbell Bench Press）</td><td>40–50kg × 4–6 下，3 組，不衝單次</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>肩胛＋上胸</td><td>地雷管單臂推舉（Single-Arm Landmine Press）</td><td>3 組 × 8 下 / 邊</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>肩中束</td><td>啞鈴側平舉（Dumbbell Lateral Raise）</td><td>3 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>3 組 × 10 下 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>抗伸展</td><td>負重平板支撐（Weighted Plank）</td><td>3 組 × 30–40 秒</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>肩胛穩定</td><td>繩索面拉（Cable Face Pull）</td><td>3 組 × 15 下</td></tr>
-                  <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>橢圓機（Elliptical Trainer）或固定式腳踏車（Stationary Bike）</td><td>20 分鐘，舒服喘</td></tr>
-                  <tr><td class="block-tag">居家徒手核心</td><td>側向穩定＋恢復</td><td>側棒式（Side Plank）＋ 90/90 呼吸（90/90 Breathing）</td><td>2 組 × 30 秒 / 邊 + 3 分鐘</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
+          <article class="day-card" id="day2"><span class="mini-label">Day 2</span><h3>上胸＋肩膀線條</h3><div class="table-wrap"><table><thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead><tbody>
+            <tr><td class="block-tag">重量訓練</td><td>上胸主項</td><td>低角度上斜機械胸推（Low-Incline Machine Chest Press）</td><td>15kg×10、25kg×8、35kg×6，工作組 3 組</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>推力穩定</td><td>槓鈴臥推（Barbell Bench Press）</td><td>40–50kg × 4–6 下，3 組，不衝單次</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>肩胛＋上胸</td><td>地雷管單臂推舉（Single-Arm Landmine Press）</td><td>3 組 × 8 下 / 邊</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>肩中束</td><td>啞鈴側平舉（Dumbbell Lateral Raise）</td><td>3 組 × 12 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>3 組 × 10 下 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>抗伸展</td><td>負重平板支撐（Weighted Plank）</td><td>3 組 × 30–40 秒</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>肩胛穩定</td><td>繩索面拉（Cable Face Pull）</td><td>3 組 × 15 下</td></tr>
+            <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>橢圓機或固定式腳踏車</td><td>20 分鐘，舒服喘</td></tr>
+            <tr><td class="block-tag">居家徒手核心</td><td>側向穩定＋恢復</td><td>側棒式＋90/90 呼吸</td><td>2 組 × 30 秒 / 邊 + 3 分鐘</td></tr>
+          </tbody></table></div></article>
 
-          <article class="day-card" id="day3">
-            <span class="mini-label">Day 3</span>
-            <h3>背部＋肩胛穩定</h3>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead>
-                <tbody>
-                  <tr><td class="block-tag">重量訓練</td><td>垂直拉</td><td>高位下拉（Lat Pulldown）</td><td>3 組 × 8–10 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>水平拉</td><td>坐姿划船（Seated Row）</td><td>3 組 × 8–10 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>穩定划船</td><td>胸靠划船（Chest-Supported Row）</td><td>2 組 × 10 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>後三角</td><td>反向飛鳥（Reverse Pec Deck / Rear Delt Fly）</td><td>3 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>手臂輔助</td><td>啞鈴二頭彎舉（Dumbbell Biceps Curl）</td><td>2 組 × 10 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>單側抗側屈</td><td>單手提行走（Suitcase Carry）</td><td>3 趟 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>抗旋轉停留</td><td>拉繩抗旋轉停留（Cable Pallof Hold）</td><td>3 組 × 20 秒 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>抗旋轉划船</td><td>平板啞鈴划船（Plank Row / Renegade Row）</td><td>3 組 × 8 下 / 邊</td></tr>
-                  <tr><td class="block-tag">有氧</td><td>中低強度</td><td>划船機（Rowing Machine）</td><td>20 分鐘，不衝爆</td></tr>
-                  <tr><td class="block-tag">居家徒手核心</td><td>控制＋腰椎保護</td><td>鳥狗式（Bird Dog）＋ 麥吉爾捲腹（McGill Curl-Up）</td><td>2 組 × 8 下 / 邊 + 3 組 × 10 秒</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
+          <article class="day-card" id="day3"><span class="mini-label">Day 3</span><h3>背部＋肩胛穩定</h3><div class="table-wrap"><table><thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead><tbody>
+            <tr><td class="block-tag">重量訓練</td><td>垂直拉</td><td>高位下拉（Lat Pulldown）</td><td>3 組 × 8–10 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>水平拉</td><td>坐姿划船（Seated Row）</td><td>3 組 × 8–10 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>穩定划船</td><td>胸靠划船（Chest-Supported Row）</td><td>2 組 × 10 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>後三角</td><td>反向飛鳥（Reverse Pec Deck / Rear Delt Fly）</td><td>3 組 × 12 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>手臂輔助</td><td>啞鈴二頭彎舉（Dumbbell Biceps Curl）</td><td>2 組 × 10 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>單側抗側屈</td><td>單手提行走（Suitcase Carry）</td><td>3 趟 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>抗旋轉停留</td><td>拉繩抗旋轉停留（Cable Pallof Hold）</td><td>3 組 × 20 秒 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>抗旋轉划船</td><td>平板啞鈴划船（Plank Row / Renegade Row）</td><td>3 組 × 8 下 / 邊</td></tr>
+            <tr><td class="block-tag">有氧</td><td>中低強度</td><td>划船機（Rowing Machine）</td><td>20 分鐘，不衝爆</td></tr>
+            <tr><td class="block-tag">居家徒手核心</td><td>控制＋腰椎保護</td><td>鳥狗式＋麥吉爾捲腹</td><td>2 組 × 8 下 / 邊 + 3 組 × 10 秒</td></tr>
+          </tbody></table></div></article>
 
-          <article class="day-card" id="day4">
-            <span class="mini-label">Day 4</span>
-            <h3>單腳穩定＋彈跳基礎</h3>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead>
-                <tbody>
-                  <tr><td class="block-tag">重量訓練</td><td>單腳主項</td><td>後腳抬高分腿蹲（Rear-Foot Elevated Split Squat, RFESS）</td><td>徒手×8，20kg×6，工作組 3 組</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>單腳推蹬</td><td>踏箱上階（Step-Up）</td><td>3 組 × 8 下 / 邊</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>深蹲模式</td><td>高腳杯深蹲（Goblet Squat）</td><td>20–28kg × 8 下，3 組</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>臀中肌</td><td>坐姿髖外展（Seated Hip Abduction）</td><td>2 組 × 15 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>軀幹剛性</td><td>農夫走路（Farmer’s Walk）</td><td>3 趟 × 30–40 秒</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>抗旋轉</td><td>拉繩抗旋轉推（Cable Pallof Press）</td><td>3 組 × 10 下 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>腹直肌負重</td><td>繩索跪姿捲腹（Cable Crunch）</td><td>3 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>固定式腳踏車（Stationary Bike）</td><td>20 分鐘，保留腿，不踩爛</td></tr>
-                  <tr><td class="block-tag">居家徒手核心</td><td>核心剛性＋控制</td><td>熊爬懸停（Bear Hover）＋ 死蟲式（Dead Bug）</td><td>2 組 × 20 秒 + 2 組 × 8 下 / 邊</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
+          <article class="day-card" id="day4"><span class="mini-label">Day 4</span><h3>單腳穩定＋彈跳基礎</h3><div class="table-wrap"><table><thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead><tbody>
+            <tr><td class="block-tag">重量訓練</td><td>單腳主項</td><td>後腳抬高分腿蹲（RFESS）</td><td>徒手×8，20kg×6，工作組 3 組</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>單腳推蹬</td><td>踏箱上階（Step-Up）</td><td>3 組 × 8 下 / 邊</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>深蹲模式</td><td>高腳杯深蹲（Goblet Squat）</td><td>20–28kg × 8 下，3 組</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>臀中肌</td><td>坐姿髖外展（Seated Hip Abduction）</td><td>2 組 × 15 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>軀幹剛性</td><td>農夫走路（Farmer’s Walk）</td><td>3 趟 × 30–40 秒</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>抗旋轉</td><td>拉繩抗旋轉推（Cable Pallof Press）</td><td>3 組 × 10 下 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>腹直肌負重</td><td>繩索跪姿捲腹（Cable Crunch）</td><td>3 組 × 12 下</td></tr>
+            <tr><td class="block-tag">有氧</td><td>Zone 2</td><td>固定式腳踏車（Stationary Bike）</td><td>20 分鐘，保留腿，不踩爛</td></tr>
+            <tr><td class="block-tag">居家徒手核心</td><td>核心剛性＋控制</td><td>熊爬懸停＋死蟲式</td><td>2 組 × 20 秒 + 2 組 × 8 下 / 邊</td></tr>
+          </tbody></table></div></article>
 
-          <article class="day-card" id="day5">
-            <span class="mini-label">Day 5</span>
-            <h3>全身運動能力＋腹肩補強</h3>
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead>
-                <tbody>
-                  <tr><td class="block-tag">重量訓練</td><td>速度主項</td><td>Hammer 機械硬舉速度組（Hammer Strength Deadlift Speed Set）</td><td>75–85kg × 2 下，5–6 組，速度要快</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>肩推</td><td>機械肩推（Machine Shoulder Press）</td><td>3 組 × 8 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>上胸收縮</td><td>低到高滑輪夾胸（Low-to-High Cable Fly）</td><td>3 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">重量訓練</td><td>後三角</td><td>反向飛鳥（Reverse Pec Deck / Rear Delt Fly）</td><td>2 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>腹直肌負重</td><td>繩索跪姿捲腹（Cable Crunch）</td><td>3 組 × 12 下</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>3 組 × 10 下 / 邊</td></tr>
-                  <tr><td class="block-tag">負重核心</td><td>單側抗側屈</td><td>單手提行走（Suitcase Carry）</td><td>2 趟 / 邊</td></tr>
-                  <tr><td class="block-tag">有氧</td><td>輕 HIIT</td><td>固定式腳踏車（Stationary Bike）或風扇車（Air Bike）</td><td>30 秒快 + 90 秒慢，8–10 輪</td></tr>
-                  <tr><td class="block-tag">居家徒手核心</td><td>恢復＋側向穩定</td><td>90/90 呼吸（90/90 Breathing）＋ 側棒式（Side Plank）</td><td>3 分鐘 + 2 組 × 30 秒 / 邊</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </article>
+          <article class="day-card" id="day5"><span class="mini-label">Day 5</span><h3>全身運動能力＋腹肩補強</h3><div class="table-wrap"><table><thead><tr><th>區塊</th><th>分項</th><th>動作名稱</th><th>目標組數 / 重量</th></tr></thead><tbody>
+            <tr><td class="block-tag">重量訓練</td><td>速度主項</td><td>Hammer 機械硬舉速度組</td><td>75–85kg × 2 下，5–6 組，速度要快</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>肩推</td><td>機械肩推（Machine Shoulder Press）</td><td>3 組 × 8 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>上胸收縮</td><td>低到高滑輪夾胸（Low-to-High Cable Fly）</td><td>3 組 × 12 下</td></tr>
+            <tr><td class="block-tag">重量訓練</td><td>後三角</td><td>反向飛鳥（Reverse Pec Deck / Rear Delt Fly）</td><td>2 組 × 12 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>腹直肌負重</td><td>繩索跪姿捲腹（Cable Crunch）</td><td>3 組 × 12 下</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>旋轉控制</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>3 組 × 10 下 / 邊</td></tr>
+            <tr><td class="block-tag">負重核心</td><td>單側抗側屈</td><td>單手提行走（Suitcase Carry）</td><td>2 趟 / 邊</td></tr>
+            <tr><td class="block-tag">有氧</td><td>輕 HIIT</td><td>固定式腳踏車或風扇車</td><td>30 秒快 + 90 秒慢，8–10 輪</td></tr>
+            <tr><td class="block-tag">居家徒手核心</td><td>恢復＋側向穩定</td><td>90/90 呼吸＋側棒式</td><td>3 分鐘 + 2 組 × 30 秒 / 邊</td></tr>
+          </tbody></table></div></article>
         </section>
 
         <section class="block" id="home-core">
           <h2>四、居家徒手核心</h2>
           <p>這部分不佔健身房主訓練時間，安排在有氧後、洗澡前或睡前。目的不是操爆腹肌，而是讓腰、骨盆、肋骨與呼吸回到比較好的位置。</p>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>動作</th><th>中文名稱（英文名稱）</th><th>用途</th><th>建議量</th></tr></thead>
-              <tbody>
-                <tr><td>呼吸恢復</td><td>90/90 呼吸（90/90 Breathing）</td><td>降低下背張力，讓骨盆與肋骨收回來。</td><td>3 分鐘</td></tr>
-                <tr><td>腹壓控制</td><td>死蟲式（Dead Bug）</td><td>練核心控制，不讓腰椎代償。</td><td>2 組 × 8 下 / 邊</td></tr>
-                <tr><td>腰椎保護</td><td>麥吉爾捲腹（McGill Curl-Up）</td><td>建立核心剛性，降低腰椎剪力。</td><td>3 組 × 10 秒</td></tr>
-                <tr><td>抗旋轉</td><td>鳥狗式（Bird Dog）</td><td>訓練對側手腳控制與骨盆穩定。</td><td>2 組 × 8 下 / 邊</td></tr>
-                <tr><td>側向穩定</td><td>側棒式（Side Plank）</td><td>補強腹斜肌、腰方肌與抗側屈能力。</td><td>2 組 × 30 秒 / 邊</td></tr>
-                <tr><td>全身剛性</td><td>熊爬懸停（Bear Hover）</td><td>練核心剛性與肩髖穩定。</td><td>2 組 × 20 秒</td></tr>
-              </tbody>
-            </table>
+          <div class="table-wrap"><table><thead><tr><th>動作</th><th>中文名稱（英文名稱）</th><th>用途</th><th>建議量</th></tr></thead><tbody>
+            <tr><td>呼吸恢復</td><td>90/90 呼吸（90/90 Breathing）</td><td>降低下背張力，讓骨盆與肋骨收回來。</td><td>3 分鐘</td></tr>
+            <tr><td>腹壓控制</td><td>死蟲式（Dead Bug）</td><td>練核心控制，不讓腰椎代償。</td><td>2 組 × 8 下 / 邊</td></tr>
+            <tr><td>腰椎保護</td><td>麥吉爾捲腹（McGill Curl-Up）</td><td>建立核心剛性，降低腰椎剪力。</td><td>3 組 × 10 秒</td></tr>
+            <tr><td>抗旋轉</td><td>鳥狗式（Bird Dog）</td><td>訓練對側手腳控制與骨盆穩定。</td><td>2 組 × 8 下 / 邊</td></tr>
+            <tr><td>側向穩定</td><td>側棒式（Side Plank）</td><td>補強腹斜肌、腰方肌與抗側屈能力。</td><td>2 組 × 30 秒 / 邊</td></tr>
+            <tr><td>全身剛性</td><td>熊爬懸停（Bear Hover）</td><td>練核心剛性與肩髖穩定。</td><td>2 組 × 20 秒</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section class="block" id="energy">
+          <h2>五、保守 TDEE 與赤字表</h2>
+          <p>以下數字已納入目前 4/20–5/20 平均步數約 <strong>3530 步/天</strong>，並採取「全部低估法」：TDEE 一律取範圍下限，赤字用建議攝取上限估算。</p>
+          <div class="metric-grid">
+            <div class="metric"><span>低活動休息日</span><b>2000 kcal</b></div>
+            <div class="metric"><span>標準休息日</span><b>2100 kcal</b></div>
+            <div class="metric"><span>休息日＋有氧</span><b>2300 kcal</b></div>
+            <div class="metric"><span>低容量訓練日</span><b>2550 kcal</b></div>
+            <div class="metric"><span>標準訓練日</span><b>2800 kcal</b></div>
+            <div class="metric"><span>高容量訓練日</span><b>2900 kcal</b></div>
           </div>
+          <div class="table-wrap"><table><thead><tr><th>日型</th><th>條件</th><th>低估 TDEE</th><th>建議攝取</th><th>保守赤字</th></tr></thead><tbody>
+            <tr><td>低活動休息日</td><td>&lt;2000 步，久坐久躺</td><td><strong>2000 kcal</strong></td><td>1450–1550 kcal</td><td><strong>約 450 kcal</strong></td></tr>
+            <tr><td>標準休息日</td><td>約 3500 步</td><td><strong>2100 kcal</strong></td><td>1450–1600 kcal</td><td><strong>約 500 kcal</strong></td></tr>
+            <tr><td>高步數休息日</td><td>5000–7000 步</td><td><strong>2250 kcal</strong></td><td>1500–1650 kcal</td><td><strong>約 600 kcal</strong></td></tr>
+            <tr><td>休息日＋有氧</td><td>約 3500 步＋35 分鐘有氧</td><td><strong>2300 kcal</strong></td><td>1550–1700 kcal</td><td><strong>約 600 kcal</strong></td></tr>
+            <tr><td>低容量訓練日</td><td>重訓＋核心，無有氧</td><td><strong>2550 kcal</strong></td><td>2100–2200 kcal</td><td><strong>約 350 kcal</strong></td></tr>
+            <tr><td>標準訓練日</td><td>重訓＋核心＋35 分鐘有氧</td><td><strong>2800 kcal</strong></td><td>2200–2300 kcal</td><td><strong>約 500 kcal</strong></td></tr>
+            <tr><td>高容量教練課日</td><td>約 29 組＋35 分鐘有氧</td><td><strong>2900 kcal</strong></td><td>2250–2400 kcal</td><td><strong>約 500 kcal</strong></td></tr>
+            <tr><td>訓練＋有氧＋居家核心</td><td>標準訓練＋35 分鐘有氧＋30 分鐘居家核心</td><td><strong>2900 kcal</strong></td><td>2250–2400 kcal</td><td><strong>約 500 kcal</strong></td></tr>
+          </tbody></table></div>
+          <div class="callout warn"><strong>使用規則：</strong>每日赤字先用本表計算。若當天食物油脂較高、機器熱量顯示偏大，仍以本表低估 TDEE 為準，不額外放大赤字。</div>
+          <div class="callout good"><strong>飲食主基準：</strong>休息日多數守 1450–1600 kcal；標準訓練日守 2200–2300 kcal；高容量訓練日可放到 2250–2400 kcal。蛋白質維持訓練日約 135–145g、休息日約 115–125g。</div>
         </section>
 
         <section class="block" id="adjustment">
-          <h2>五、調整規則</h2>
-          <div class="callout warn">
-            <strong>先試跑，不急著定案：</strong>這份是 DEMO 版。先跑 1–2 週，看腰、核心、RFESS、心肺與睡眠恢復，再進入正式版。
-          </div>
+          <h2>六、調整規則</h2>
+          <div class="callout warn"><strong>先試跑，不急著定案：</strong>這份是 DEMO 版。先跑 1–2 週，看腰、核心、RFESS、心肺、睡眠恢復與體重趨勢，再進入正式版。</div>
           <ul>
             <li><strong>Hammer 硬舉：</strong>如果 100–105kg 核心明顯晃，下一次先降到 95–100kg，把連續輸出穩住。</li>
             <li><strong>RFESS：</strong>如果最累、最不穩，先不要加重量。能穩定做完 20kg×6×3，再考慮進階。</li>
             <li><strong>農夫走路：</strong>目前先追 30–40 秒穩定，不急著追重量。</li>
             <li><strong>臥推：</strong>先把 40–50kg 的 4–6 下練穩，不頻繁測 60kg 以上單次。</li>
             <li><strong>有氧：</strong>Zone 2 優先建立底子。HIIT 一週最多一次，且隔天不能讓腿和腰明顯恢復不良。</li>
+            <li><strong>熱量調整：</strong>連續兩週平均體重下降低於 0.3 kg，先檢查油脂與零食，再考慮每日少 100 kcal；若一週掉超過 0.8 kg 或訓練明顯虛掉，訓練日優先加 100–150 kcal 碳水。</li>
             <li><strong>疼痛規則：</strong>痠、緊、疲勞可以觀察；刺痛、麻、卡住、越做越痛，立刻停止該動作。</li>
           </ul>
         </section>
@@ -379,8 +211,6 @@
     </div>
   </main>
 
-  <footer>
-    <p>最後更新：2026-05-20｜2026 個人化訓練計畫 v3 DEMO</p>
-  </footer>
+  <footer><p>最後更新：2026-05-20｜2026 個人化訓練計畫 v3 DEMO｜已加入保守 TDEE 低估表</p></footer>
 </body>
 </html>
