@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>每日登記與反思 | 飲食與訓練計畫</title>
-  <meta name="description" content="飲食與訓練計畫的每日登記與反思頁面。資料預設只存在本機瀏覽器，不公開上傳。">
+  <title>Nutrition-related research</title>
+  <meta name="description" content="飲食與訓練相關的研究與心得記錄">
   <style>
     :root {
       --bg: #f7f8fb;
