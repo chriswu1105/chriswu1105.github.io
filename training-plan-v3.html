@@ -98,12 +98,12 @@
     section.block { border-radius: var(--radius); padding: 28px; margin-bottom: 22px; min-width: 0; }
     section.block h2 { margin: 0 0 18px; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; }
     h3 { margin: 22px 0 8px; font-size: 1.12rem; }
+    h4 { margin: 18px 0 8px; font-size: 1rem; color: var(--accent-2); }
     ul { margin: 8px 0 0; padding-left: 1.25rem; }
     li { margin: 0 0 8px; }
     .callout { border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 14px; padding: 14px 16px; margin: 16px 0; }
     .callout.good { border-color: var(--good); background: #ecfdf5; }
     .callout.warn { border-color: var(--warn); background: #fffbeb; }
-    .callout.danger { border-color: var(--danger); background: #fef2f2; }
     .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 18px 0; }
     .metric { border-radius: 16px; padding: 14px; background: #fbfdff; }
     .metric span { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 4px; }
@@ -166,7 +166,7 @@
       </div>
       <aside class="hero-panel">
         <h2>版本定位</h2>
-        <p><strong>目前版本：</strong>v7 實操整合版</p>
+        <p><strong>目前版本：</strong>v8 實操整合版</p>
         <p><strong>訓練重點：</strong>神經募集、單腳能力、肩腹線條、背部完整性、胸肩穩定、補弱點。</p>
         <p><strong>一句話：</strong>先穩，再重；速度掉、核心晃，就停。</p>
       </aside>
@@ -179,11 +179,7 @@
         <h2>頁面目錄</h2>
         <a href="#goals">一、訓練目標</a>
         <a href="#rules">二、全域規則</a>
-        <a href="#weekly-plan">三、一週五練課表</a>
-        <a href="#notes">四、動作注意事項</a>
-        <a href="#aerobic">五、有氧 Cycle</a>
-        <a href="#home">六、居家訓練</a>
-        <a href="#extra">七、額外有氧日 IF</a>
+        <a href="#current-plan">三、最新版課表</a>
       </aside>
 
       <div>
@@ -222,8 +218,11 @@
           </ul>
         </section>
 
-        <section class="block" id="weekly-plan">
-          <h2>三、一週五練課表</h2>
+        <section class="block" id="current-plan">
+          <h2>三、最新版課表 v8</h2>
+          <div class="callout warn">
+            <strong>固定架構：</strong>40 分鐘重量訓練 + 20 分鐘核心 / 複合 + 30 分鐘有氧；居家訓練 8–12 分鐘。這版已刪除原本第三點到第六點，整合成單一最新版課表區塊。
+          </div>
 
           <article class="day-card">
             <span class="mini-label">Day 1</span>
@@ -238,6 +237,7 @@
               <tr><td>核心 / 複合</td><td>農夫走路（Farmer’s Walk）</td><td>4–5 趟</td></tr>
               <tr><td>有氧</td><td>滑雪機（SkiErg）</td><td>30 分鐘</td></tr>
             </tbody></table></div>
+            <p class="subtle">踏箱提膝不是一般踏箱上階；動作是踩上去、另一腳提膝到胸前，再往後回地面，全程不雙腳併攏。</p>
           </article>
 
           <article class="day-card">
@@ -252,6 +252,7 @@
               <tr><td>核心 / 複合 2</td><td>機械腹 crunch（Machine Crunch）</td><td>熱身 2 組 + 正式 2 組</td></tr>
               <tr><td>有氧</td><td>Cycle 動作</td><td>30 分鐘</td></tr>
             </tbody></table></div>
+            <div class="callout good"><strong>Hammer 肩推注意事項：</strong>手握斜的，掌骨要和握把貼合，不要用手指對齊虛握。腳踩穩，屁股稍微往前坐，胸椎貼好椅背；吸氣讓胸椎被動挺起，不要主動硬挺胸，避免肩峰撞擊。</div>
           </article>
 
           <article class="day-card">
@@ -266,6 +267,7 @@
               <tr><td>核心 / 複合 2</td><td>拉繩伐木轉體（Cable Woodchop）</td><td>正式 2–3 組</td></tr>
               <tr><td>有氧</td><td>Cycle 動作</td><td>30 分鐘</td></tr>
             </tbody></table></div>
+            <div class="callout good"><strong>平板啞鈴划船注意事項：</strong>握著啞鈴撐地，不要手掌直接撐地，避免手腕疼痛。先穩定再划船，感受前三角、前鋸肌、側腹、闊背肌、臀部協同發力。定位是「背出力時核心不要亂轉」，不是大重量借力划船。</div>
           </article>
 
           <article class="day-card">
@@ -280,6 +282,7 @@
               <tr><td>複合 2</td><td>半跪姿單臂啞鈴肩推（Half-Kneeling Single-Arm Dumbbell Overhead Press）</td><td>2–3 組 × 6–8 下 / 邊</td></tr>
               <tr><td>有氧</td><td>Cycle 動作</td><td>30 分鐘</td></tr>
             </tbody></table></div>
+            <p class="subtle">Day 4 複合動作主軸是肩部訓練 + 核心穩定 + 骨盆控制，不是單純練肩推。</p>
           </article>
 
           <article class="day-card">
@@ -294,72 +297,37 @@
               <tr><td>核心 2</td><td>繩索跪姿捲腹（Cable Crunch）</td><td>熱身 1–2 組 + 正式 2 組</td></tr>
               <tr><td>有氧</td><td>Cycle 動作</td><td>30 分鐘</td></tr>
             </tbody></table></div>
+            <p class="subtle">Day 5 是補洞日：補單腳、補胸椎旋轉划船、補臀、補髖、補腹肌。</p>
           </article>
-        </section>
 
-        <section class="block" id="notes">
-          <h2>四、動作注意事項</h2>
-          <div class="day-card">
-            <h3>Hammer 肩推（Hammer Strength Shoulder Press）</h3>
-            <ul>
-              <li>手握要斜一點，讓掌骨與握把完整貼合。</li>
-              <li>不要用手指對齊、不要虛握，避免力量跑到手腕和手指。</li>
-              <li>腳踩穩，屁股稍微往前坐。</li>
-              <li>胸椎貼好椅背，吸氣時讓胸椎被動挺起。</li>
-              <li>不要主動硬挺胸；硬挺胸容易讓肩膀往前頂，增加肩峰撞擊風險。</li>
-            </ul>
-          </div>
-          <div class="day-card">
-            <h3>平板啞鈴划船（Renegade Row / Plank Row）</h3>
-            <ul>
-              <li>用手握住啞鈴撐地，不要手掌直接撐地，避免手腕疼痛。</li>
-              <li>先穩定身體，再划船；不要急著追重量。</li>
-              <li>感受前三角、前鋸肌、側腹、闊背肌、臀部一起協同發力。</li>
-              <li>定位是「背部出力時核心不要亂轉」，不是硬做大重量借力划船。</li>
-            </ul>
-          </div>
-          <div class="day-card">
-            <h3>踏箱提膝（Step-Up to Knee Drive）</h3>
-            <ul>
-              <li>踩上去那一下要像單腳推蹬，不是像爬樓梯。</li>
-              <li>提膝腳往胸前帶，回程慢一點，保持骨盆穩定。</li>
-              <li>進階到背槓版本前，先確保徒手或啞鈴版本膝蓋、骨盆、足弓都穩。</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="block" id="aerobic">
-          <h2>五、有氧 Cycle</h2>
+          <h3>有氧 Cycle</h3>
           <div class="table-wrap"><table><thead><tr><th>Cycle</th><th>Day 2–5 有氧</th><th>Day 1 有氧</th></tr></thead><tbody>
             <tr><td>Cycle 1</td><td>登階機（Stair Climber）</td><td>滑雪機（SkiErg）</td></tr>
             <tr><td>Cycle 2</td><td>固定式腳踏車（Stationary Bike）或風扇車（Air Bike）</td><td>滑雪機（SkiErg）</td></tr>
             <tr><td>Cycle 3</td><td>划船機（Rowing Machine）</td><td>滑雪機（SkiErg）</td></tr>
             <tr><td>Cycle 4</td><td>橢圓機（Elliptical Trainer）</td><td>滑雪機（SkiErg）</td></tr>
           </tbody></table></div>
-          <p class="subtle">跑步機不放。Day 1 固定滑雪機，避免下肢被有氧補刀。</p>
-        </section>
+          <p class="subtle">每完成一次大 Cycle，就換下一個有氧主動作。跑步機完全不放。</p>
 
-        <section class="block" id="home">
-          <h2>六、居家訓練</h2>
-          <p>每天不用全做，選 2–3 個動作，8–12 分鐘即可。</p>
-          <div class="table-wrap"><table><thead><tr><th>動作</th><th>目的</th></tr></thead><tbody>
-            <tr><td>90/90 呼吸（90/90 Breathing）</td><td>放鬆下背，收回肋骨與骨盆。</td></tr>
-            <tr><td>死蟲式（Dead Bug）</td><td>核心控制，避免腰代償。</td></tr>
-            <tr><td>鳥狗式（Bird Dog）</td><td>對側控制與脊椎穩定。</td></tr>
-            <tr><td>側棒式（Side Plank）</td><td>側向穩定。</td></tr>
-            <tr><td>熊爬懸停（Bear Hover）</td><td>全身剛性與肩髖連動。</td></tr>
-            <tr><td>跳箱（Box Jump）</td><td>居家或非正式訓練日作為彈跳神經喚醒，低量高品質。</td></tr>
+          <h3>居家訓練</h3>
+          <p>每天不用全做，選 2–3 個，總共 8–12 分鐘就好。</p>
+          <div class="table-wrap"><table><thead><tr><th>類型</th><th>動作</th><th>用途</th></tr></thead><tbody>
+            <tr><td>恢復</td><td>90/90 呼吸（90/90 Breathing）</td><td>放鬆下背、收回肋骨與骨盆。</td></tr>
+            <tr><td>控制</td><td>死蟲式（Dead Bug）</td><td>核心控制，避免腰代償。</td></tr>
+            <tr><td>穩定</td><td>鳥狗式（Bird Dog）</td><td>對側控制與脊椎穩定。</td></tr>
+            <tr><td>側向穩定</td><td>側棒式（Side Plank）</td><td>補側腹與抗側屈。</td></tr>
+            <tr><td>全身剛性</td><td>熊爬懸停（Bear Hover）</td><td>肩髖連動、核心剛性。</td></tr>
+            <tr><td>彈跳神經</td><td>跳箱（Box Jump）</td><td>居家或非正式訓練日，低量高品質。</td></tr>
           </tbody></table></div>
-        </section>
 
-        <section class="block" id="extra">
-          <h2>七、額外加練有氧日 IF｜純登階機日</h2>
+          <h3>額外加練有氧日 IF｜純登階機日</h3>
           <div class="table-wrap"><table><thead><tr><th>區塊</th><th>動作</th><th>目標</th></tr></thead><tbody>
             <tr><td>有氧</td><td>登階機（Stair Climber）</td><td>30–45 分鐘，中等強度。</td></tr>
             <tr><td>股四頭恢復</td><td>坐姿腿伸展（Machine Seated Leg Extension）</td><td>輕中量 2–3 組，不力竭。</td></tr>
             <tr><td>拉伸 1</td><td>跪姿股四頭 / 髖屈肌伸展（Kneeling Quad / Hip Flexor Stretch）</td><td>每側 45–60 秒 × 2。</td></tr>
             <tr><td>拉伸 2</td><td>站姿股四頭伸展（Standing Quad Stretch）</td><td>每側 30–45 秒 × 2。</td></tr>
           </tbody></table></div>
+          <p class="subtle">這個不算正式 Day 1–5，只是額外刷登階機後的恢復模組。</p>
         </section>
       </div>
     </div>
